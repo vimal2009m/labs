@@ -1,3 +1,4 @@
+---
 - name: Test
   ec2:
     region: "{{ aws_region }}"
