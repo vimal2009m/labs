@@ -5,6 +5,19 @@
     aws_region: us-east-1
   tasks:
   - name:
+    ec2_vpc_net
+      name: VPC_tower
+      cidr_block: 10.0.0.0/16
+      region: "{{ aws_region }}"
+      tenancy: default
+    register: VPC_tower
+  - name: Subnet_ec2
+    ec2_vpc_subnet:
+      state: present
+      vpc_id: "{{ VPC_tower.vpc.id }}"
+      cidr: 10.0.1.0/24
+      region: "{{ aws_region }}"
+    register: subnet_tower      
     ec2:
       region: "{{ aws_region }}"
       key_name: ansible-tower-aws-key_name
@@ -13,4 +26,5 @@
       wait: yes
       group: ansible_tower_sg
       count: 1
+      vpc_subnet_id: "{{ subnet_tower.subnet.id }}"
       assign_public_ip: yes
