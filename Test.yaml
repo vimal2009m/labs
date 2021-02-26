@@ -5,7 +5,7 @@
     aws_region: us-east-1
   tasks:
   - name:
-    ec2_vpc_net
+    ec2_vpc_net:
       name: VPC_tower
       cidr_block: 10.0.0.0/16
       region: "{{ aws_region }}"
