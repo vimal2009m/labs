@@ -23,7 +23,7 @@
   - name: create ec2    
     ec2:
       region: "{{ aws_region }}"
-      key_name: ansible-tower-aws-key_name
+      key_name: hello
       instance_type: t2.micro
       image: ami-0915bcb5fa77e4892
       wait: yes
