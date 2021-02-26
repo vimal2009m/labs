@@ -11,13 +11,16 @@
       region: "{{ aws_region }}"
       tenancy: default
     register: VPC_tower
+    
   - name: Subnet_ec2
     ec2_vpc_subnet:
       state: present
       vpc_id: "{{ VPC_tower.vpc.id }}"
       cidr: 10.0.1.0/24
       region: "{{ aws_region }}"
-    register: subnet_tower      
+    register: subnet_tower
+    
+  - name: create ec2    
     ec2:
       region: "{{ aws_region }}"
       key_name: ansible-tower-aws-key_name
