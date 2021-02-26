@@ -1,12 +1,16 @@
 ---
 - name: Test
-  ec2:
-    region: "{{ aws_region }}"
-    key_name: ansible-tower-aws-key_name
-    instance_type: t2.micro
-    image: ami-0915bcb5fa77e4892
-    wait: yes
-    group: ansible_tower_sg
-    count: 1
-    vpc_subnet_id: "{{ ansible_tower_subnet.subnet.id }}"
-    assign_public_ip: yes
+  hosts: localhost
+  vars:
+    aws_region: us-eas-1
+  tasks:
+  - name:
+    ec2:
+      region: "{{ aws_region }}"
+      key_name: ansible-tower-aws-key_name
+      instance_type: t2.micro
+      image: ami-0915bcb5fa77e4892
+      wait: yes
+      group: ansible_tower_sg
+      count: 1
+      assign_public_ip: yes
