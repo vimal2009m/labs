@@ -4,9 +4,9 @@
   vars:
     aws_region: us-east-1
   tasks:
-  - name: test vpc
+  - name: mytest vpc
     ec2_vpc_net:
-      name: VPC_tower
+      name: VPC_tower_my
       cidr_block: 10.0.0.0/16
       region: "{{ aws_region }}"
       tenancy: default
@@ -25,7 +25,7 @@
       region: "{{ aws_region }}"
       key_name: hello
       instance_type: t2.micro
-      image: ami-0915bcb5fa77e4892
+      image: ami-0aeeebd8d2ab47354
       wait: yes
       count: 1
       vpc_subnet_id: "{{ subnet_tower.subnet.id }}"
